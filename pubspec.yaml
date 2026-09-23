@@ -1,0 +1,93 @@
+name: ayatunahub
+description: "Application islamique AyatunaHub - Coran, Hadiths, Prière, Qibla, Live et Calendrier"
+publish_to: 'none'
+version: 1.0.0+1
+
+environment:
+  sdk: ">=3.13.0 <4.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  # Firebase
+  firebase_core: ^3.12.0
+  firebase_auth: ^5.5.0
+  cloud_firestore: ^5.6.0
+  firebase_crashlytics: ^4.1.0
+  firebase_performance: ^0.10.0
+
+  # YouTube
+  youtube_player_flutter: ^9.1.1
+  http: ^1.6.0
+
+  # Environnement
+  flutter_dotenv: ^5.1.0
+
+  # UI
+  google_fonts: ^6.1.0
+  flutter_svg: ^2.2.3
+  intl: ^0.18.1
+
+  # Stockage local
+  shared_preferences: ^2.5.0
+
+  # Audio
+  just_audio: ^0.10.6
+  audio_service: ^0.18.0
+
+  # Géolocalisation et cartes
+  geolocator: ^10.1.0
+  flutter_map: ^6.1.0
+  latlong2: ^0.9.0
+
+  # Prière et calendrier
+  #adhan_dart: ^0.1.0
+  hijri_calendar: ^1.0.0
+
+  # Coran et Hadiths
+  quran: ^1.4.1
+  dorar_hadith: ^0.3.0
+
+  # Notifications
+  flutter_local_notifications: ^17.2.3
+
+  # Paiements
+  in_app_purchase: ^3.2.4
+
+  # Publicités
+  google_mobile_ads: ^9.0.0
+
+  # Utilitaires
+  url_launcher: ^6.2.0
+  webview_flutter: ^4.13.0
+  provider: ^6.1.1
+  cupertino_icons: ^1.0.8
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^6.0.0
+  flutter_launcher_icons: ^0.13.1
+  flutter_native_splash: ^2.4.0
+
+flutter:
+  uses-material-design: true
+  assets:
+    - .env
+    - assets/images/
+    - assets/fonts/
+
+flutter_launcher_icons:
+  android: true
+  ios: false
+  image_path: "assets/images/icon_app.jpg"
+  adaptive_icon_background: "#0C6B4E"
+  adaptive_icon_foreground: "assets/images/icon_app.jpg"
+
+flutter_native_splash:
+  color: "#0C6B4E"
+  image: assets/images/annimation.png
+  android_12:
+    color: "#0C6B4E"
+    image: assets/images/annimation.png
