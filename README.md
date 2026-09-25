@@ -1,3 +1,32 @@
+# 🕌 AyatunaHub
+
+Application islamique complète pour Android.
+
+## 📱 Fonctionnalités
+- 📖 Coran (arabe + traduction + audio)
+- 📚 Hadiths (688 livres)
+- 🕌 Horaires de prière + Adhan
+- 🕋 Qibla avec boussole
+- 📡 Live Mecque / Médine / Al-Aqsa
+- 📅 Calendrier hégirien
+
+## 🎬 Chaînes YouTube intégrées
+- [Ammar TV](https://youtube.com/@ammartv) — Récitations indonésiennes
+- [Ar Rahman](https://youtube.com/@arrahmanislamic) — Live Mecque/Médine
+- [Al-Aqsa Live](https://youtube.com/@livebroadcastal-aqsa3717) — Al-Aqsa
+- [... autres chaînes ...]
+
+## 🛠️ Stack technique
+Flutter • Firebase • YouTube API • Provider
+
+## 👨‍💻 Auteur
+**FOKAS** — First Organization for Knowledge, Automation & Security
+📍 Bukavu, RDC
+🌐 [fokas-dav.netlify.app](https://fokas-dav.netlify.app)
+
+
+
+
 # AyatunaHub
 
 A new Flutter project.
