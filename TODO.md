@@ -1,3 +1,304 @@
+# 🕌 AyatunaHub – TODO List
+
+Application islamique complète pour Android et iOS.
+Objectif : Lancement avant Ramadan 2027 (20 Sha'ban 1448).
+
+---
+
+## 📌 1. IDENTITÉ DE L'APPLICATION
+
+- [x] Nom : **AyatunaHub**
+- [x] Sous-titre : **Toutes les activités islamiques**
+- [x] Plateformes : **Android (Play Store)** + **iOS (App Store)**
+- [ ] Objectif de lancement : **Avant Ramadan 2027**
+
+### Description
+AyatunaHub est une application islamique complète qui aide les musulmans dans leurs activités quotidiennes : lecture du Coran, apprentissage des notions islamiques (base et avancées), accès à plus de 600 hadiths authentiques, Fiqh, Tawhid, notions pour nouveaux musulmans, écoute de récitants internationaux et locaux (RDC, Burundi, Rwanda, Côte d'Ivoire, Bénin, Afrique).
+
+**Championnat annuel** : 20 récitants locaux par an, compétition avec votes et tests.
+- 🥇 1er : 50 000 FC
+- 🥈 2e : 25 000 FC
+- 🥉 3e : 15 000 FC
+
+---
+
+## 🔐 2. AUTHENTIFICATION ET PROFIL
+
+### 2.1 Fonctionnalités
+- [x] Inscription / Connexion par email + mot de passe
+- [x] Déconnexion
+- [x] Réinitialisation du mot de passe
+- [ ] Profil utilisateur (nom, email, date d'inscription, statut premium)
+
+### 2.2 Solution technique
+- [x] Firebase Authentication (email/password)
+- [x] Firestore pour les infos complémentaires
+- [ ] Distinguer Premium / Gratuit
+
+### 2.3 Méthode d'intégration
+- [x] Ajouter les packages : `firebase_core`, `firebase_auth`, `cloud_firestore`
+- [x] Configurer Firebase (projet, `google-services.json`, `flutterfire configure`)
+- [x] Créer `AuthService` (signUp, signIn, signOut, resetPassword)
+- [x] Créer `AuthScreen` (formulaires inscription/connexion)
+- [x] Utiliser `StreamBuilder<User?>` ou `Consumer`
+
+### 2.4 Conseils
+- [x] Stocker uniquement `email` + `uid` dans Firestore
+- [ ] Statut premium : `shared_preferences` (V1)
+
+---
+
+## 📖 3. CORAN (LECTURE ET RÉCITATIONS)
+
+### 3.1 Fonctionnalités
+- [x] Affichage du Coran en arabe (versets numérotés)
+- [ ] Traduction : Français, Anglais, Lingala, Swahili
+- [x] Lecture audio des versets/sourates
+- [ ] Récitations des récitants locaux + internationaux
+- [ ] Choix du récitant favori (stockage local)
+
+### 3.2 Solution technique
+- [x] Package `qcf_quran_lite`
+- [x] Package `just_audio`
+- [ ] `shared_preferences` pour le récitant favori
+
+### 3.3 Conseils
+- [ ] Police arabe (Amiri, Uthmanic)
+- [x] Barre de progression
+- [ ] Cache des audios (locaux ou URLs)
+
+### 3.4 API audio (à intégrer)
+- [ ] URLs islamic.network : `https://cdn.islamic.network/quran/audio-surah/128/ar.alafasy/{n}.mp3`
+
+---
+
+## 📚 4. HADITHS (BIBLIOTHÈQUE)
+
+### 4.1 Fonctionnalités
+- [ ] Accès à plus de 688 livres via `dorar_hadith`
+- [ ] Recherche par mot-clé
+- [ ] Filtrage par livre, narrateur, grade
+- [ ] Affichage du texte, source et authenticité
+
+### 4.2 Solution technique
+- [x] Packages `dorar_hadith` + `dorar_hadith_flutter`
+- [ ] Filtrage local ou API
+
+### 4.3 Conseils
+- [ ] Cache des résultats
+- [ ] Recherche avancée
+- [ ] Système de favoris hadiths
+
+---
+
+## 🕌 5. HORAIRES DE PRIÈRE
+
+### 5.1 Fonctionnalités
+- [x] Calcul automatique des 5 prières (géolocalisation)
+- [x] Temps restant avant la prochaine prière
+- [ ] Notifications avec son (`adhan.mp3`)
+
+### 5.2 Solution technique
+- [x] `adhan_dart` (calcul)
+- [x] `geolocator` (GPS)
+- [x] `flutter_local_notifications`
+
+### 5.3 Conseils
+- [ ] Méthode "Umm al-Qura" ou "MWL"
+- [ ] Switch ON/OFF notifications
+- [x] Son islamique pour notifs
+
+---
+
+## 🕋 6. QIBLA ET CARTE
+
+### 6.1 Fonctionnalités
+- [x] Direction de la Mecque (boussole)
+- [x] Carte interactive (position + Mecque)
+- [x] Calcul de l'angle Qibla
+
+### 6.2 Solution technique (OpenStreetMap)
+- [x] `flutter_map`
+- [x] `latlong2`
+- [x] `geolocator`
+- [x] Calcul manuel de l'angle
+
+### 6.3 Conseils
+- [x] Tuiles OpenStreetMap gratuites
+- [x] Boussole en superposition
+
+---
+
+## 📡 7. FLUX EN DIRECT (LIVE)
+
+### 7.1 Fonctionnalités
+- [ ] Direct Mecque (Masjid Al-Haram) via YouTube
+- [ ] Direct Médine (Masjid An-Nabawi) via YouTube
+- [ ] Direct Al-Aqsa
+- [ ] Chaînes islamiques (voir liste plus bas)
+
+### 7.2 Solution technique
+- [x] `youtube_player_flutter`
+- [ ] API YouTube Data v3 pour détecter les lives
+
+### 7.3 Conseils
+- [x] Flux YouTube officiels prioritaires
+- [ ] Gestion du mode hors-ligne
+
+---
+
+## 📅 8. CALENDRIER HÉGIRIEN
+
+### 8.1 Fonctionnalités
+- [ ] Mois islamique en cours
+- [ ] Événements (Ramadan, Aïd, Achoura, etc. — sans Mawlid)
+- [ ] Navigation mois/année
+
+### 8.2 Solution technique
+- [ ] `hijri_calendar`
+- [ ] `intl`
+
+### 8.3 Conseils
+- [ ] Vue mensuelle
+- [ ] Couleurs pour jours de fête
+- [ ] Partage d'événements
+
+---
+
+## ⭐ 9. SYSTÈME DE FAVORIS
+
+- [ ] Ajouter un récitant/hadith aux favoris
+- [ ] Afficher la liste
+- [ ] Supprimer un favori
+- [ ] Animation lors de l'ajout/suppression
+- [x] `shared_preferences` (V1)
+
+---
+
+## 🆓 10. MODE GRATUIT
+
+- [ ] Publicités AdMob (bannières)
+- [ ] Coran : toutes les sourates + versets complets (arabe + audio international)
+- [ ] Hadiths : **Al Arba'una Al Nawawi** uniquement
+- [ ] Prière : horaires + notifications
+- [ ] Qibla : OpenStreetMap + boussole
+- [ ] Calendrier hégirien complet
+- [ ] Notifications personnalisées
+- [ ] Carte du monde (OpenStreetMap, mode clair/sombre)
+- [ ] **Jeux de questions** pour tester ses connaissances
+- [ ] Notions de base pour nouveaux musulmans (à connecter à des ressources, ex: "Al-Adhkar wal Adab")
+
+---
+
+## 💎 11. MODE PREMIUM
+
+- [ ] Live Mecque / Médine
+- [ ] Récitations locales (premium)
+- [ ] Hadiths : 688 livres via `dorar_hadith` + recherche avancée
+- [ ] Favoris récitants
+- [ ] Chaînes islamiques (Al Bayan, Huda TV, etc.)
+- [ ] Aucune publicité
+
+### Tarifs
+- [ ] 1 mois : **10 $**
+- [ ] 2 mois : **20 $**
+- [ ] 1 an : **50 $**
+- [ ] Essai gratuit : **32 heures**
+
+### Moyens de paiement
+- [ ] Compte bancaire (à finaliser en décembre)
+- [x] Afri Money : +243 902 068 175
+- [ ] Airtel Money (à ajouter)
+- [ ] Orange Money (à ajouter)
+- [ ] MTN Money (à ajouter)
+
+---
+
+## 🛠️ 12. ARCHITECTURE TECHNIQUE
+
+- [x] Frontend : Flutter (Dart)
+- [x] Base locale : SharedPreferences
+- [x] Base cloud : Firebase Firestore
+- [ ] Paiements : In-App Purchases + Mobile Money
+- [ ] Publicités : AdMob
+- [ ] Notifications : Local + FCM
+- [x] Cartes : OpenStreetMap + Geolocator
+- [x] Audio : Just Audio
+
+---
+
+## 📝 13. NOTES TECHNIQUES
+
+- [ ] Mode hors-ligne (sourates + Arba'una Al Nawawi + premium)
+- [x] Clés API dans `.env`
+- [x] Thèmes clair/sombre
+- [ ] Accessibilité (texte agrandi, contraste élevé)
+
+---
+
+## 🎯 14. PUBLIC CIBLE
+
+- [x] Musulmans du monde entier
+- [x] Étudiants en quête de connaissances
+- [x] Familles (apprentissage enfants)
+- [x] Récitants locaux
+
+---
+
+## 📺 15. LISTE DES CHAÎNES YOUTUBE
+
+### 🔴 PRIORITÉ 1 – Lives des lieux saints
+- [ ] **Ar Rahman** – Live Mecque/Médine 24/7 – https://youtube.com/@arrahmanislamic
+- [ ] **Muhammad Ali** – Makkah Live HD – https://youtube.com/@muhammad_ali
+- [ ] **Live Broadcast AL-AQSA** – Al-Aqsa Live – https://youtube.com/@livebroadcastal-aqsa3717
+
+### 🟡 PRIORITÉ 2 – Chaînes éducatives (FR + International)
+- [ ] **Radiotélévision Al Bayane** – TV islamique FR – https://youtube.com/@radiotvalbayane
+- [ ] **AlQuran4K** – Coran 4K – https://youtube.com/@alquran4kofficial
+
+### 🟢 PRIORITÉ 3 – Débats et prédications (Swahili)
+- [ ] **DUG TV1** – Débats musulmans-chrétiens – https://youtube.com/@miskiyaroho
+- [ ] **AlhudaTv Kenya** – TV islamique – https://youtube.com/@alhudatvkenya
+- [ ] **Saif d'Or TV** – Sermons et débats – https://youtube.com/@saifullah-saleh
+- [ ] **Sheikh Abdul Hamid Yusuf** – Enseignements – https://youtube.com/@sheikh-abdul-hamid-yusuf
+
+### 🟠 PRIORITÉ 4 – Autres chaînes
+- [ ] **BUZEBAZEBA SALAFY ONLINE** – https://youtube.com/@buzebazebasalafyonlinetv.9564
+- [ ] **AR-RISALAT TV** – https://youtube.com/@arrisalattv
+- [ ] **Al Huda TV Burundi** – https://youtube.com/@alhudatvburundi304
+- [ ] **Sunnah authentique** – https://youtube.com/@sunnahauthentique223
+- [ ] **Ammar TV** – Coran indonésien – https://youtube.com/@ammartv
+
+---
+
+## ⚠️ URGENCES (à traiter en priorité)
+
+- [ ] 🔴 Changer la clé API YouTube (exposée sur GitHub)
+- [ ] 🔴 Récupérer les vrais IDs YouTube (16 chaînes)
+- [ ] 🟡 Publier les règles de sécurité Firestore
+- [ ] 🟡 Remplir Firestore (versets, prières, chaînes, events)
+- [ ] 🟢 Créer le TODO.md complet
+
+---
+
+## 🚀 PROCHAINES ÉTAPES
+
+- [ ] Corriger les IDs YouTube réels
+- [ ] Intégrer les récitations audio du Coran
+- [ ] Ajouter les 99 noms d'Allah
+- [ ] Ajouter les Azkar
+- [ ] Ajouter les Dua
+- [ ] Ajouter le traqueur de prière
+- [ ] Optimiser avec `Future.wait()`
+- [ ] Ajouter Toastification
+- [ ] Configurer `get_it`
+
+---
+
+**Dernière mise à jour : 28 septembre 2026**
+
+
+
 # AyatunaHub
 
 A new Flutter project.
