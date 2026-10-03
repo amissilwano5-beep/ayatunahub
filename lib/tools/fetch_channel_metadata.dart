@@ -41,38 +41,45 @@ Future<void> main(List<String> args) async {
   }
 
   for (final id in args) {
-    print('\n--- ChannelId: $id ---');
+    stdout.writeln('\n--- ChannelId: $id ---');
     final item = await fetchChannel(apiKey, id);
     if (item == null) {
-      print('Aucune donnée pour $id');
+      stdout.writeln('Aucune donnée pour $id');
       continue;
     }
     final snippet = item['snippet'] as Map<String, dynamic>?;
     final stats = item['statistics'] as Map<String, dynamic>?;
     final branding = item['brandingSettings'] as Map<String, dynamic>?;
+    final description = snippet?['description'] as String? ?? '';
 
     final title = snippet?['title'] ?? '<no title>';
     final customUrl = snippet?['customUrl'];
-    final description = snippet?['description'] ?? '';
     final country = snippet?['country'];
     final publishedAt = snippet?['publishedAt'];
     final subscriberCount = stats?['subscriberCount'];
     final viewCount = stats?['viewCount'];
 
-    print('Title: $title');
-    if (customUrl != null) print('Custom URL: $customUrl');
-    if (publishedAt != null) print('PublishedAt: $publishedAt');
-    if (country != null) print('Country: $country');
-    print('Subscribers: ${subscriberCount ?? 'n/a'}');
-    print('Views: ${viewCount ?? 'n/a'}');
+    stdout.writeln('Title: $title');
+    if (customUrl != null) stdout.writeln('Custom URL: $customUrl');
+    if (publishedAt != null) stdout.writeln('PublishedAt: $publishedAt');
+    if (country != null) stdout.writeln('Country: $country');
+    if (branding != null) stdout.writeln('Branding settings: available');
+    if (description.isNotEmpty) {
+      final preview = description.length > 120
+          ? '${description.substring(0, 120)}...'
+          : description;
+      stdout.writeln('Description: $preview');
+    }
+    stdout.writeln('Subscribers: ${subscriberCount ?? 'n/a'}');
+    stdout.writeln('Views: ${viewCount ?? 'n/a'}');
     final thumbnails = snippet?['thumbnails'] as Map<String, dynamic>?;
     if (thumbnails != null) {
       final thumb = thumbnails['default'] ?? thumbnails.values.first;
-      print('Thumbnail: ${thumb?['url']}');
+      stdout.writeln('Thumbnail: ${thumb?['url']}');
     }
 
     final channelUrl = 'https://www.youtube.com/channel/$id';
-    print('URL: $channelUrl');
+    stdout.writeln('URL: $channelUrl');
 
     // small delay
     await Future.delayed(const Duration(milliseconds: 200));

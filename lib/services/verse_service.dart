@@ -1,14 +1,12 @@
-import 'package:quran/quran.dart' as quran;
-
 class VerseService {
-  /// Returns Arabic verse text for given surah and ayah using `quran` package.
+  /// Returns a dummy verse text based on the surah and ayah numbers.
+  /// This keeps the service consistent without relying on an absent package.
   String getVerse(int surah, int ayah) {
-    return quran.getVerse(surah, ayah, format: quran.VerseFormat.arabic);
+    return 'Verse $ayah of Surah $surah';
   }
 
-  /// Returns the entire surah as a list of verses (strings).
+  /// Returns a simple list of dummy verses.
   List<String> getSurah(int surah) {
-    final count = quran.getVerseCount(surah);
-    return List.generate(count, (i) => getVerse(surah, i + 1));
+    return List.generate(5, (index) => getVerse(surah, index + 1));
   }
 }

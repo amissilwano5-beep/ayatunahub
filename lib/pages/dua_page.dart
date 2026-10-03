@@ -11,7 +11,6 @@ class DuaPage extends StatefulWidget {
 class _DuaPageState extends State<DuaPage> {
   final DuaService _service = DuaService();
   List _items = [];
-  String _query = '';
 
   @override
   void initState() {
@@ -21,7 +20,6 @@ class _DuaPageState extends State<DuaPage> {
 
   void _onSearch(String q) {
     setState(() {
-      _query = q;
       _items = q.isEmpty ? _service.getAll() : _service.search(q);
     });
   }

@@ -16,6 +16,7 @@ dependencies:
   cloud_firestore: ^5.6.0
   firebase_crashlytics: ^4.1.0
   firebase_performance: ^0.10.0
+  firebase_messaging: ^15.2.1
 
   # YouTube
   youtube_player_flutter: ^9.1.1
@@ -48,9 +49,14 @@ dependencies:
   # Coran et Hadiths
   quran: ^1.4.1
   dorar_hadith: ^0.3.0
+  quran_audio: ^1.0.0
+  quran_with_tafsir: ^1.0.0
+  flutter_compass: ^0.8.0
+  hijri: ^3.0.1
 
   # Notifications
   flutter_local_notifications: ^17.2.3
+  timezone: ^0.9.4
 
   # Paiements
   in_app_purchase: ^3.2.4
@@ -74,9 +80,7 @@ dev_dependencies:
 flutter:
   uses-material-design: true
   assets:
-    - .env
     - assets/images/
-    - assets/fonts/
 
 flutter_launcher_icons:
   android: true

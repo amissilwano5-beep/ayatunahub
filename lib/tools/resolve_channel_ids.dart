@@ -1,3 +1,5 @@
+// ignore_for_file: avoid_print
+
 // Script Dart pour résoudre des handles YouTube (@handle) en channelId
 // Usage:
 // 1) Créez un fichier `env.json` à la racine contenant votre clé (ne pas commiter):
@@ -29,7 +31,7 @@ Future<void> main() async {
   final projectRoot = Directory.current.path;
 
   // Lire env.json local
-  final envFile = File('${projectRoot}/env.json');
+  final envFile = File('$projectRoot/env.json');
   if (!await envFile.exists()) {
     stderr.writeln('Fichier env.json introuvable dans $projectRoot. Créez-le à partir de env.json.example et ajoutez votre clé.');
     exit(1);
@@ -42,7 +44,7 @@ Future<void> main() async {
   }
 
   // Lire channels_data.dart
-  final channelsFile = File('${projectRoot}/lib/data/channels_data.dart');
+  final channelsFile = File('$projectRoot/lib/data/channels_data.dart');
   if (!await channelsFile.exists()) {
     stderr.writeln('Fichier lib/data/channels_data.dart introuvable.');
     exit(1);
@@ -67,7 +69,7 @@ Future<void> main() async {
       final channelId = await resolveHandle(apiKey, cleaned);
       results[handle] = channelId;
       print(channelId ?? 'NOT FOUND');
-    } catch (e) {
+    } catch (_) {
       results[handle] = null;
       print('ERROR');
     }

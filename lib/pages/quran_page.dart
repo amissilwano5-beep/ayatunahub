@@ -322,9 +322,18 @@ class SurahCatalogView extends StatelessWidget {
         onPressed: () async {
           try {
             await SurahAudioController.instance.playSurah(surahNumber: surah.number);
-            ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text('Lecture en cours'), behavior: SnackBarBehavior.floating));
+            if (!context.mounted) return;
+            ScaffoldMessenger.of(context).showSnackBar(
+              const SnackBar(
+                content: Text('Lecture en cours'),
+                behavior: SnackBarBehavior.floating,
+              ),
+            );
           } catch (e) {
-            ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('Erreur lecture audio: $e')));
+            if (!context.mounted) return;
+            ScaffoldMessenger.of(context).showSnackBar(
+              SnackBar(content: Text('Erreur lecture audio: $e')),
+            );
           }
         },
         icon: const Icon(Icons.play_arrow_rounded),

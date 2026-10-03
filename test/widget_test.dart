@@ -9,7 +9,7 @@ import 'package:ayatunahub/main.dart';
 
 void main() {
   testWidgets('L’application affiche la page d’accueil', (WidgetTester tester) async {
-    await tester.pumpWidget(const IslamicApp());
+    await tester.pumpWidget(const AyatunaHubApp());
 
     expect(find.text('AyatunaHub'), findsWidgets);
     expect(find.text('Lire le Coran'), findsOneWidget);

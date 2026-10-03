@@ -2,12 +2,7 @@ import 'package:geolocator/geolocator.dart';
 
 class PrayerService {
   static Future<Map<String, dynamic>> getPrayerTimesForCurrentLocation() async {
-    final position = await Geolocator.getCurrentPosition(
-      locationSettings: const LocationSettings(
-        accuracy: LocationAccuracy.medium,
-      ),
-    );
-
+    final position = await Geolocator.getCurrentPosition();
     final now = DateTime.now();
     final base = DateTime(now.year, now.month, now.day, 5, 0);
 

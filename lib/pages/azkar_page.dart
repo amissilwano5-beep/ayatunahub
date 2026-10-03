@@ -11,7 +11,6 @@ class AzkarPage extends StatefulWidget {
 class _AzkarPageState extends State<AzkarPage> {
   final AzkarService _service = AzkarService();
   List _items = [];
-  String _query = '';
 
   @override
   void initState() {
@@ -21,7 +20,6 @@ class _AzkarPageState extends State<AzkarPage> {
 
   void _onSearch(String q) {
     setState(() {
-      _query = q;
       _items = q.isEmpty ? _service.getAll() : _service.search(q);
     });
   }
